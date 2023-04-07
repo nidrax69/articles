@@ -1,0 +1,119 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Auth",
+    "dateExported": "2023-04-07T14:48:18.409Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "faa5cc23-c57a-40b8-a0da-fd3965b3d411",
+            "colId": "6e474a18-8135-4ff0-aadd-381b6c8adf57",
+            "containerId": "",
+            "name": "Register",
+            "url": "/register",
+            "method": "POST",
+            "sortNum": 10000,
+            "created": "2023-04-07T11:36:11.738Z",
+            "modified": "2023-04-07T12:06:50.143Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "name",
+                        "value": "{{name}}"
+                    },
+                    {
+                        "name": "password",
+                        "value": "{{password}}"
+                    },
+                    {
+                        "name": "email",
+                        "value": "{{email}}"
+                    }
+                ]
+            },
+            "tests": [
+                {
+                    "type": "res-code",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "200"
+                },
+                {
+                    "type": "Content-Type",
+                    "custom": "",
+                    "action": "equal",
+                    "value": "application/json"
+                },
+                {
+                    "type": "set-env-var",
+                    "custom": "json.access_token",
+                    "action": "setto",
+                    "value": "{{access_token}}"
+                }
+            ]
+        },
+        {
+            "_id": "26a33492-0a06-400d-8ee6-1b6981eaa6bc",
+            "colId": "6e474a18-8135-4ff0-aadd-381b6c8adf57",
+            "containerId": "",
+            "name": "Login",
+            "url": "/login",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2023-04-07T11:36:38.926Z",
+            "modified": "2023-04-07T12:07:05.247Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "formencoded",
+                "raw": "",
+                "form": [
+                    {
+                        "name": "email",
+                        "value": "{{email}}"
+                    },
+                    {
+                        "name": "password",
+                        "value": "{{password}}"
+                    }
+                ]
+            },
+            "tests": [
+                {
+                    "type": "set-env-var",
+                    "custom": "json.access_token",
+                    "action": "setto",
+                    "value": "{{access_token}}"
+                }
+            ]
+        },
+        {
+            "_id": "8a4c8f6b-b80b-4e33-97ed-0fcf8ad453a1",
+            "colId": "6e474a18-8135-4ff0-aadd-381b6c8adf57",
+            "containerId": "",
+            "name": "Logout",
+            "url": "http://localhost:8000/api/logout",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2023-04-07T11:36:49.766Z",
+            "modified": "2023-04-07T11:46:23.011Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
+            "tests": []
+        }
+    ],
+    "settings": {
+        "options": {
+            "baseUrl": "http://localhost:8000/api"
+        },
+        "envId": "99750d01-feec-4441-bb96-68d5d747b089"
+    }
+}

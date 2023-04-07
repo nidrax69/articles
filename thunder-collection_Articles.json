@@ -1,0 +1,90 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "Articles",
+    "dateExported": "2023-04-07T14:48:13.489Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "fa57cb95-8e98-4201-beb1-515a000bbe40",
+            "colId": "8d9c0c1d-21bb-4828-9f2c-9656ecec3f9e",
+            "containerId": "",
+            "name": "Get All",
+            "url": "http://localhost:8000/api/articles",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2023-04-07T09:36:49.351Z",
+            "modified": "2023-04-07T11:44:16.485Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "63b81175-f29d-4feb-b69c-89089bbb00c8",
+            "colId": "8d9c0c1d-21bb-4828-9f2c-9656ecec3f9e",
+            "containerId": "",
+            "name": "Get",
+            "url": "",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2023-04-07T09:37:08.302Z",
+            "modified": "2023-04-07T11:44:24.634Z",
+            "headers": [],
+            "params": [],
+            "auth": {
+                "type": "bearer",
+                "bearer": "{{access_token}}"
+            },
+            "tests": []
+        },
+        {
+            "_id": "46d0844c-636e-4e54-8a67-91030a2fef8a",
+            "colId": "8d9c0c1d-21bb-4828-9f2c-9656ecec3f9e",
+            "containerId": "",
+            "name": "Update",
+            "url": "",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2023-04-07T09:37:46.815Z",
+            "modified": "2023-04-07T09:37:46.815Z",
+            "headers": []
+        },
+        {
+            "_id": "c34639b7-0900-489b-a887-b241dbe5c24f",
+            "colId": "8d9c0c1d-21bb-4828-9f2c-9656ecec3f9e",
+            "containerId": "",
+            "name": "Delete",
+            "url": "",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2023-04-07T09:39:47.510Z",
+            "modified": "2023-04-07T09:39:47.510Z",
+            "headers": []
+        },
+        {
+            "_id": "84791396-7c69-4223-a7cc-6ead06a20608",
+            "colId": "8d9c0c1d-21bb-4828-9f2c-9656ecec3f9e",
+            "containerId": "",
+            "name": "Create",
+            "url": "http://localhost:8000/api/articles",
+            "method": "POST",
+            "sortNum": 50000,
+            "created": "2023-04-07T11:21:35.046Z",
+            "modified": "2023-04-07T11:22:57.435Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ],
+    "settings": {
+        "auth": {
+            "type": "bearer",
+            "bearer": "{{access_token}}"
+        },
+        "envId": "99750d01-feec-4441-bb96-68d5d747b089"
+    }
+}
