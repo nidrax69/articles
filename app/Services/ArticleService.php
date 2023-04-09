@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Exceptions\ArticleNotEditableException;
 use App\Models\Article;
 
 class ArticleService
@@ -22,6 +23,7 @@ class ArticleService
         $user = auth()->user();
 
         $article = new Article($data);
+        $article->user()->associate($user);
 
         if ($article->status == 'published') {
             $article->publication_date = now();
@@ -32,18 +34,26 @@ class ArticleService
         return $article;
     }
 
+    public function updateArticleStatus(array $_article, Article $article)
+    {
+        $article->status = $_article["status"];
+        $article->save();
+
+        return $article;
+    }
+
     public function updateArticle(array $data, Article $article)
     {
         if ($article->status !== 'draft') {
-            throw new \Exception('Cannot update a published or deleted article');
+            throw new ArticleNotEditableException();
         }
 
         $article->fill($data);
 
         if ($article->status == 'published') {
-            $article->publication_date = now();
+            $article->publish_date = now();
         } else {
-            $article->publication_date = null;
+            $article->publish_date = null;
         }
 
         $article->save();

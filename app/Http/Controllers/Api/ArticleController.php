@@ -62,7 +62,11 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        $article = $this->articleService->updateArticle($request->validated(), $article);
+        if ($request->query('status')) {
+            $article = $this->articleService->updateArticleStatus($request->validated(), $article);
+        } else {
+            $article = $this->articleService->updateArticle($request->validated(), $article);
+        }
         return response()->json(['data' => $article]);
     }
 
