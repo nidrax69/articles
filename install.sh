@@ -15,11 +15,11 @@ touch database/database.sqlite
 # Run migrations
 php artisan migrate
 
-# Seed database
-php artisan db:seed
-
 # Launch Tests
 php artisan test
+
+# Seed database
+php artisan db:seed
 
 # Serve the application
 php artisan serve
