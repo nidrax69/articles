@@ -36,8 +36,8 @@ class ProhibitedToUpdateIfPublished implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
-        return 'Cannot modify article if it is in a published status.';
+        return 'Cannot modify article if it is in a published status. Modify the status of the article first !';
     }
 }

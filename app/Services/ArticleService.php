@@ -4,11 +4,12 @@ namespace App\Services;
 
 use App\Exceptions\ArticleNotEditableException;
 use App\Models\Article;
+use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Http\Request;
 
 class ArticleService
 {
-    public function getArticles(Request $request)
+    public function getArticles(Request $request) : Paginator
     {
         $articles = Article::query();
 
@@ -33,12 +34,12 @@ class ArticleService
         return $articles;
     }
 
-    public function getArticle(Article $article)
+    public function getArticle(Article $article): Article
     {
         return $article;
     }
 
-    public function createArticle(array $data)
+    public function createArticle(array $data) : Article
     {
         // Get the authenticated user
         $user = auth()->user();
@@ -56,7 +57,7 @@ class ArticleService
     }
 
 
-    public function updateArticle(array $data, Article $article)
+    public function updateArticle(array $data, Article $article): Article
     {
         $article->fill($data);
 
