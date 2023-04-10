@@ -8,6 +8,8 @@ This project requires:
 - Composer
 - SQLite
 
+
+
 ## Installation
 
 To install the project, follow these steps:
@@ -15,4 +17,12 @@ To install the project, follow these steps:
 1. Clone the repository:
 ```sh
 git clone https://github.com/nidrax69/zelty.git
+```
+
+2. Install the project:
+
+Make sure to make the script executable with ``chmod +x install.sh`` 
+
+```sh
+./install.sh
 ```
