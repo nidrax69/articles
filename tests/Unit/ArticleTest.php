@@ -62,13 +62,13 @@ class ArticleTest extends TestCase
         // Check that the response has a 422 status code (unprocessable entity)
         $response->assertStatus(422);
         $response->assertJsonFragment([
-            "message" => "Cannot modify article if it is in a published status. (and 1 more error)",
+            "message" => "Cannot modify article if it is in a published status. Modify the status of the article first ! (and 1 more error)",
             "errors" => [
                 "title" => [
-                    "Cannot modify article if it is in a published status."
+                    "Cannot modify article if it is in a published status. Modify the status of the article first !"
                 ],
                 "content" => [
-                    "Cannot modify article if it is in a published status."
+                    "Cannot modify article if it is in a published status. Modify the status of the article first !"
                 ]
             ]
         ]);

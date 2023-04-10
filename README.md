@@ -8,7 +8,6 @@ This project requires:
 - Composer
 - SQLite
 
-
 ## Installation
 
 To install the project, follow these steps:
@@ -20,13 +19,20 @@ git clone https://github.com/nidrax69/zelty.git
 
 2. Install the project:
 
-Make sure to make the script executable with ``chmod +x install.sh`` 
-
 ```sh
+cd zelty
+#! Make sure to make the script executable 
+chmod +x install.sh
 ./install.sh
 ```
 
-If the tests are passed successfully, The application will be available at ``http://localhost:8000``
+This script launch :
+- dependencies
+- seeders
+- tests
+- migrations
+
+The application will be available at ``http://localhost:8000``
 
 3. Configure Postman to consume the API
 
@@ -77,4 +83,8 @@ Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->midd
 
 > :warning: For updating the status of an article publish to draft , you need to only update the field status, or an error will be throw
 
+6. For Launch Tests
+```sh
+php artisan test
+```
 
