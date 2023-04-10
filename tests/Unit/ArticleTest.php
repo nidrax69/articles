@@ -5,9 +5,12 @@ namespace Tests\Unit;
 use App\Models\Article;
 use App\Models\User;
 use Tests\TestCase;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ArticleTest extends TestCase
 {
+    use RefreshDatabase;
+
     public function testGetSingleArticleWithAuth()
     {
         $user = User::factory()->create();
@@ -263,5 +266,21 @@ class ArticleTest extends TestCase
 
         // Check that the response has a 404 status code (not found)
         $response->assertStatus(404);
+    }
+
+    public function testArticleTitleLength()
+    {
+        // Create a user to act as the author of the article
+        $user = User::factory()->create();
+
+        // Create an article with a draft status
+        $response = $this->actingAs($user)->postJson('/api/articles', [
+            'title' => 'a long title of 128 char a long title of 128 char a long title of 128 char a long title of 128 char a long title of 128 char a long title of 128 char a long title of 128 char',
+            'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            'status' => 'draft',
+        ]);
+
+        // Check that the response has a 422 status code (unprocessable entity)
+        $response->assertStatus(422);
     }
 }
