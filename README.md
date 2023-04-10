@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Zelty
+Ce projet est une API Laravel pour gérer des articles.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Installation
+Dépendances
+Avant d'installer le projet, assurez-vous que les dépendances suivantes sont installées sur votre système :
 
-## About Laravel
+PHP >= 8.2
+Composer
+SQLite (ou tout autre SGBD pris en charge par Laravel)
+Étapes
+Clonez le projet à partir de GitHub :
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+bash
+Copy code
+git clone https://github.com/nidrax69/zelty.git
+Accédez au dossier du projet :
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+bash
+Copy code
+cd zelty
+Installez les dépendances :
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+bash
+Copy code
+composer install
+Copiez le fichier .env.example en .env :
 
-## Learning Laravel
+bash
+Copy code
+cp .env.example .env
+Générez une clé d'application Laravel :
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+bash
+Copy code
+php artisan key:generate
+Créez la base de données SQLite :
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+bash
+Copy code
+touch database/database.sqlite
+Exécutez les migrations pour créer les tables de la base de données :
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+bash
+Copy code
+php artisan migrate
+(Optionnel) Ajoutez des données de test en exécutant le seeder :
 
-## Laravel Sponsors
+bash
+Copy code
+php artisan db:seed
+Lancez le serveur de développement :
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+bash
+Copy code
+php artisan serve
+L'API est maintenant accessible à l'adresse http://localhost:8000/api.
 
-### Premium Partners
+Documentation
+Authentification
+L'API utilise un jeton d'authentification pour les requêtes protégées. Pour obtenir un jeton, envoyez une requête POST à http://localhost:8000/api/login avec les informations d'identification de l'utilisateur. Le jeton sera inclus dans la réponse.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+Endpoints
+Voici la liste des endpoints disponibles :
 
-## Contributing
+Endpoint	Méthode	Description
+/api/login	POST	Obtient un jeton d'authentification
+/api/articles	GET	Récupère une liste d'articles
+/api/articles	POST	Crée un nouvel article
+/api/articles/{id}	GET	Récupère un article par ID
+/api/articles/{id}	PUT	Met à jour un article par ID
+/api/articles/{id}	DELETE	Supprime un article par ID
+Paramètres de requête
+Les endpoints suivants acceptent des paramètres de requête :
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+/api/articles : q (recherche par titre et auteur), status (statut de l'article : "draft" ou "published"), per_page (nombre d'articles par page)
+Exemples de requêtes
+Recherche d'articles contenant le mot "Laravel" :
 
-## Code of Conduct
+bash
+Copy code
+GET /api/articles?q=Laravel
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

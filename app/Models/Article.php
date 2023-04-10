@@ -11,9 +11,16 @@ class Article extends Model
     use HasFactory;
 
     /**
-     * Get the user that owns the article.
+     * The relationships that should always be loaded.
+     *
+     * @var array
      */
-    public function user(): BelongsTo
+    protected $with = ['author'];
+
+    /**
+     * Get the author that owns the article.
+     */
+    public function author(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author_id');
     }

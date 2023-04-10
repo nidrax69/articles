@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Http\Requests\StoreArticleRequest;
+use App\Http\Resources\ArticleCollection;
+use App\Http\Resources\ArticleResource;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Services\ArticleService;
@@ -23,10 +25,10 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $articles = $this->articleService->getArticles();
-        return response()->json(['data' => $articles]);
+        $articles = $this->articleService->getArticles($request);
+        return new ArticleCollection($articles);
     }
 
     /**
@@ -38,7 +40,7 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $article = $this->articleService->createArticle($request->validated());
-        return response()->json(['data' => $article], 201);
+        return new ArticleResource($article, 201);
     }
 
     /**
@@ -50,7 +52,7 @@ class ArticleController extends Controller
     public function show(Article $article)
     {
         $article = $this->articleService->getArticle($article);
-        return response()->json(['data' => $article]);
+        return new ArticleResource($article, 200);
     }
 
     /**
@@ -62,12 +64,8 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        if ($request->query('status')) {
-            $article = $this->articleService->updateArticleStatus($request->validated(), $article);
-        } else {
-            $article = $this->articleService->updateArticle($request->validated(), $article);
-        }
-        return response()->json(['data' => $article]);
+        $article = $this->articleService->updateArticle($request->validated(), $article);
+        return new ArticleResource($article, 200);
     }
 
     /**
@@ -79,6 +77,6 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $this->articleService->deleteArticle($article);
-        return response()->json(['message' => 'Article deleted']);
+        return response()->noContent();
     }
 }

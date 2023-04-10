@@ -28,7 +28,7 @@ class StoreArticleRequest extends FormRequest
             'title' => 'required|string|max:128',
             'content' => 'required|string',
             'status' => 'required|in:draft,published',
-            'publication_date' => 'nullable|date_format:Y-m-d H:i:s|after_or_equal:today',
+            'published_at' => 'nullable|date_format:Y-m-d\TH:i:sO|after_or_equal:now|prohibited_if:status,published',
         ];
     }
 }

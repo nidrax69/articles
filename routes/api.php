@@ -39,8 +39,7 @@ Route::get('articles/{article}', [ArticleController::class, 'show'])->middleware
 Route::post('articles', [ArticleController::class, 'store'])->middleware('auth:sanctum');
 
 // PUT/PATCH an existing article
-Route::put('articles/{article}', [ArticleController::class, 'update'])->middleware('auth:sanctum');
-Route::patch('articles/{article}', [ArticleController::class, 'update'])->middleware('auth:sanctum');
+Route::put('articles/{article}', [ArticleController::class, 'update'])->middleware('auth:sanctum')->name('article');
 
 // DELETE an article
 Route::delete('articles/{article}', [ArticleController::class, 'destroy'])->middleware('auth:sanctum');
