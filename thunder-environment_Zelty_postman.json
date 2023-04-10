@@ -1,0 +1,29 @@
+{
+    "name": "Zelty",
+    "id": "c37ef0af-bbdc-4add-9e8d-cb803e22650f",
+    "_postman_variable_scope": "environment",
+    "_postman_exported_at": "2023-04-10T13:28:43.020Z",
+    "_postman_exported_using": "Thunder Client",
+    "values": [
+        {
+            "key": "name",
+            "value": "Vincent",
+            "enabled": true
+        },
+        {
+            "key": "email",
+            "value": "v.floriot@hotmail.fr",
+            "enabled": true
+        },
+        {
+            "key": "password",
+            "value": "legolas1",
+            "enabled": true
+        },
+        {
+            "key": "access_token",
+            "value": "16|0n7WjkGUNVo6HenF0A9RWXgkHTYoSOLMjDrhWZof",
+            "enabled": true
+        }
+    ]
+}
